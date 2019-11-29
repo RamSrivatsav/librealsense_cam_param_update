@@ -1,8 +1,8 @@
 // Author: Ram Srivatsav Ghorakavi
 // Company: HullBot pty ltd.
 // License: 
-// For execution: 
-
+// For execution: gcc ./path_to_file -o out -lrealsense2 -lGL -lglut -lGLU (in VS)
+//                ./out
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -35,7 +35,7 @@ void print_device_info(rs2_device* dev)
 }
 
 int main (){
-    printf("Welcome!\n");
+    printf("\n             Welcome!\n\n");
 	rs2_error* e = 0;
 
     // Create a context object. This object owns the handles to all connected realsense devices.
@@ -90,7 +90,7 @@ int main (){
 
     rs2_intrinsics intr;
     rs2_get_video_stream_intrinsics(stream_profile, &intr, &e);
-    printf("\nCurrent Intrinsics:\n");
+    printf("\nInitial Intrinsics:\n");
     printf("width: %d\n", intr.width);
     printf("height: %d\n", intr.height);
     printf("PPX: %lf\n", intr.ppx);
@@ -129,7 +129,7 @@ int main (){
 
     // validation of the new intrinsics.
     rs2_get_video_stream_intrinsics(stream_profile, &intr, &e);
-    printf("\nmodified Intrinsics:\n");
+    printf("\nAfter modification:\n");
     printf("width: %d\n", intr.width);
     printf("height: %d\n", intr.height);
     printf("PPX: %lf\n", intr.ppx);
